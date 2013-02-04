@@ -1,0 +1,10 @@
+<!ELEMENT elenco_categorie (categoria_feed*)>
+<!ELEMENT categoria_feed (feed*)>
+    <!ATTLIST categoria_feed id_cat ID #REQUIRED>
+    <!ATTLIST categoria_feed  nome CDATA #REQUIRED>
+    <!ATTLIST categoria_feed  note CDATA #IMPLIED> 
+<!ELEMENT feed (url_primaria, (url*))>
+    <!ATTLIST feed id_feed ID #REQUIRED>
+    <!ATTLIST feed nome CDATA #REQUIRED>
+<!ELEMENT url_primaria (#PCDATA)>
+<!ELEMENT url (#PCDATA)>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE utenti_registrati SYSTEM "../xml-types/utenti.dtd">
+<utenti_registrati>
+<utente cognome="ciotti" nome="elvis" password="2451871214122570198123681861872442308876192" username="elvisciotti"/>
+<utente cognome="cognome utente" nome="nome utente" password="602331315242727172892083616415515253115" username="utente"/>
+<utente cognome="ciotti" nome="elvis" password="10720251027851732151211299518278170146121" username="elvis"/>
+</utenti_registrati>

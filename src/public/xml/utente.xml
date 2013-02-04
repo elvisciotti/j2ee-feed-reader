@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE elenco_categorie SYSTEM "../xml-types/feeds.dtd">
+<elenco_categorie>
+	<categoria_feed id_cat="c2" nome="sport" note="notizie sportive">
+	
+	
+	
+	<feed id_feed="f4" nome="gazzetta.it">
+	<url_primaria>http://www.gazzetta.it/rss/Calcio.xml</url_primaria>
+	
+	<url>http://www.gazzetta.it/rss/Home.xml</url>
+	
+	</feed>
+	
+	<feed id_feed="f5" nome="ansa.it calcio">
+	<url_primaria>http://www.ansa.it/site/notizie/awnplus/calcio/synd/ansait_site_calcio_synd_Today_Idx.xml</url_primaria>
+	
+	</feed>
+	</categoria_feed>
+	
+	<categoria_feed id_cat="c3" nome="informatica" note="notizie mondo informatico">
+	
+	
+	
+	<feed id_feed="f6" nome="punto-informatico.it (news e download)">
+	<url_primaria>http://punto-informatico.it/fader/pixml.xml</url_primaria>
+	
+	<url>http://punto-informatico.it/fader/doxml.xml</url>
+	
+	</feed>
+	
+	<feed id_feed="f7" nome="programmazione">
+	<url_primaria>http://www.programmazione.it/rss.xml</url_primaria>
+	
+	</feed>
+	</categoria_feed>
+	
+	<categoria_feed id_cat="c4" nome="Finanza" note="news dal mondo finanziario">
+	
+	
+	
+	<feed id_feed="f2" nome="sole 24 ore ">
+	<url_primaria>http://www.ilsole24ore.com/rss/finanza-mercati.xml</url_primaria>
+	
+	</feed>
+	
+	<feed id_feed="f3" nome="New York Times e altri stranieri">
+	<url_primaria>http://www.nytimes.com/services/xml/rss/nyt/YourMoney.xml</url_primaria>
+	
+	<url>http://www.businesstimes.com.sg/mnt/xml/economy.xml</url>
+	
+	</feed>
+	</categoria_feed>
+	
+	<categoria_feed id_cat="c5" nome="webmaster" note="siti per webmaster">
+	
+	
+	
+	<feed id_feed="f8" nome="html.it webnews e blog">
+	<url_primaria>http://rss.html.it/webnews.xml</url_primaria>
+	
+	<url>http://blog.html.it/index.xml</url>
+	
+	</feed>
+	
+	<feed id_feed="f9" nome="Official Google Webmaster Central Blog">
+	<url_primaria>http://googlewebmastercentral.blogspot.com/atom.xml</url_primaria>
+	
+	</feed>
+	</categoria_feed>
+	
+	
+	</elenco_categorie>

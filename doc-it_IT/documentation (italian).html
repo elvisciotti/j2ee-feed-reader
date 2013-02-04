@@ -1,0 +1,470 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title> News Aggregator - Documentazione</title>
+<style type="text/css">
+<!--
+.codice {font-family: "Courier New", Courier, monospace; font-size: 14px; padding-left:20px; background-color:#CCCCCC;}
+.collegam {
+	color: #0000FF;
+	font-style: italic;
+}
+h2 { border-bottom:#000000 1px solid; background-color:#CCCCCC;}
+h1 { text-align:center; }
+p, h3, table { padding-left:15px;}
+h3 { text-decoration:underline; }
+img { margin-left: 30px;}
+table tr td { border:#CCCCCC 1px solid; }
+table tr th { background-color:#CCCCCC }
+-->
+</style>
+</head>
+
+<body>
+<h1><img  src="multimedia/rss_icon.gif" alt="logo" width="50" height="50" /> News Aggregator - Documentazione</h1>
+<h2>Titolo</h2>
+<p>News Aggregator</p>
+<h2>Descrizione del servizio offerto</h2>
+<p>Il progetto consiste in un servizio web che permette agli utenti di registrarsi, quindi loggarsi e creare le proprie <strong>categorie di news </strong>(es: generali, sport, tecnologia). In ogni categoria &egrave; possibile inserire dei <strong>feeds</strong> (feed RSS, es: &quot;notizie ansa&quot;) specificando <strong>nome</strong>, una <strong>URL primaria</strong> (es: http://www.ansa.it/feed.xml) e altre eventuali <strong>URLs</strong> (es: http://www.ansa.it/feed2.xml).<br />
+  <br />
+  La <strong>visualizzazione dinamica</strong> dei contenuti avviene tramite <strong>Applet</strong> (lanciata dopo il login).<br />
+  L'applet visualizza inizialmente le categorie inserite dall'utente. Cliccando su una di esse (es: categoria &quot;informazioni&quot;) viene ricevuto e visualizzato l'elenco dei feeds inseriti.<br />
+  Cliccando su un feed (es: &quot;notizie ansa&quot;) vengono ricevuti (dall'application che chiama ed elabora il contenuto della url relativa es: <br />
+  http://www.ansa.it/feed.xml ) e mostrati i titoli delle news disponibili ai link relativi al feed.<br />
+Cliccando su ogni titolo viene inviato all'applet il testo della news, che viene visualizzato.</p>
+<h2>Utilizzo del sito</h2>
+<p>Per utilizzare il servizio offerto dal sito, &egrave; necessario <strong>registrarsi</strong>.</p>
+<h3>Registrazione</h3>
+<p> Sotto il modulo Login (parte sinistra) &egrave; presente il link <span class="collegam">Registrati</span></p>
+<p><img alt="figura"  src="multimedia/modulo-login.gif" width="385" height="318" border="1" /> </p>
+<p>Cliccando si andr&agrave; alla pagina di registrazione (jsp/ registrazione.jsp)dove sono richiesti: nome, cognome, username, password e conferma password. La richiesta &egrave; effettuata alla pagina stessa in POST, che visualizza un contenuto diverso in base ai   parametri della request. In figura il modulo di richiesta dati (request vuota) </p>
+<p><img alt="figura"  src="multimedia/registraz.gif" width="369" height="381" border="1" /></p>
+<p>Se la request non &egrave; vuota (dati passati in POST), la pagina effettua diversi controlli sui parametri della request, nell'ordine:     </p>
+<ul>
+  <li>controlla che il nome utente non sia gi&agrave; usato </li>
+  <li> che il nome utente scelto non sia &quot;utenti&quot;</li>
+  <li> che nessuno dei campi della forma sia vuoto</li>
+  <li>che i campi password e conferma password coincidano</li>
+  <li>che la password inserita sia lunga almeno 6 caratteri </li>
+</ul>
+<p>se uno di questi errori viene rilevato, allora la jsp visualizza l'errore in questione, altrimenti, aggiunge il nuovo utente agli utenti registrati:  e visualizza un link per tornare all'<span class="collegam">HomePage</span>. <br />
+In figura l'errore dovuto alle password non concidenti e la registrazione effettuata correttamente </p>
+<p><img alt="figura"  src="multimedia/err1.gif" width="280" height="136" border="1" /><img alt="figura"  src="multimedia/loginok.gif" width="370" height="139" border="1" /></p>
+<p>&nbsp;</p>
+<p>Una volta registrati, sono possibili due tipi di operazioni: <span class="collegam">modifica dati utente</span>, <span class="collegam">Gestione feeds</span> (inserimento delle urls dei feeds in una gerarchia), e visualizzazione tramite applet (<span class="collegam">homepage</span>).</p>
+<h3>Modifica dati utente </h3>
+<p>Analogamente all'inserimento, vengono compilati i campi in base ai cookie presenti. Cliccando su &quot;salva modifiche&quot;, i dati utenti verranno aggiornati. Nota: l'username non modificabile, la password va inserita due volte per conferma. Per annullare l'operazione, cliccare sul link di ritorno all'homepage </p>
+<p><img alt="figura"  src="multimedia/moda.gif" width="415" height="377" border="1" /></p>
+<h3>Gestione Feeds  </h3>
+<p>Al caricamento della pagina (<em>jsp/categorie-elenco.jsp</em>) vengono mostrato l'elenco delle categorie inserite. Se &egrave; il primo accesso, il file (<em>&lt;utente&gt;.xml</em>) con i contenuti viene automaticamente creato e inizializzato, non verr&agrave; visualizzata nessuna categoria. In alto viene mostrato l'username dell'utente collegato e i link per il logout, link alla pagina di modifica dati di registrazione, homepage (con applet interattiva) </p>
+<p>Per ogni categoria (riga della tabella) &egrave; mostrato</p>
+<ul>
+  <li>nome, descrizione</li>
+  <li>link per inserirne internamente i feeds</li>
+  <li>link per modificare nome e descrizione </li>
+  <li>link per cancellare la categoria </li>
+</ul>
+<p><img alt="figura"  src="multimedia/cat-feeds.gif" width="639" height="376" border="1" /></p>
+<p>Operazione di <strong>modifica nome e opzioni </strong>: verr&agrave; precompilato un modulo modificabile in cui &egrave; possibile cambiare i valori e cliccare su &quot;Modifica&quot;, oppure cliccare su &quot;torna&quot; e ritornare alla pagina con elenco categorie (nessuna modifica) </p>
+<p><img alt="figura"  src="multimedia/modnomopz.gif" width="378" height="334" border="1" /></p>
+<p>Cliccando su <strong>modifica</strong>, si and&agrave; alla pagina (Servlet Operazioni) che eseguir&agrave; l'operazione e fornisce il link per tornare all'elenco categorie </p>
+<p><img alt="figura"  src="multimedia/opok.gif" width="379" height="139" border="1" /></p>
+<p>Al click su &quot;<strong>elimina</strong>&quot; nella pagina con l'elenco categorie, verr&agrave; richiesta conferma di cancellazione, quindi si verr&agrave; portati ad una pagina di conferma con link di ritorno all'elenco categorie</p>
+<p><img alt="figura"  src="multimedia/delcat.gif" width="399" height="168" border="1" /> </p>
+<p>Sotto l'elenco &egrave; presente un modulo per <strong>inserire una nuova categoria </strong></p>
+<p><img alt="figura"  src="multimedia/crea-cat.gif" width="254" height="235" border="1" /></p>
+<p>La mancata immissione del nome, comporta un errore segnalato con link per il ritorno e invito all'inserimento, altrimenti viene visualizzata conferma e link di ritorno ( la nuova categoria verr&agrave; mostrata nell'elenco)</p>
+<p><img alt="figura"  src="multimedia/opok2.gif" width="379" height="87" border="1" /> <img alt="figura"  src="multimedia/nuovacat.gif" width="440" height="112" border="1" /></p>
+<p>cliccando su <strong>Gestione fonti</strong> si andr&agrave; alla pagina con l'elenco feeds della categoria. In alto il nome della categoria e descrizione, link di ritorno a elenco cateogorie, e i feeds inseriti.</p>
+<p>Per ogni feed  &egrave; mostrato:</p>
+<ul>
+  <li>nome</li>
+  <li>Link primario del feed rss </li>
+  <li>altri eventuali links</li>
+  <li> link per modificare o eliminare il feed </li>
+</ul>
+<p><img alt="figura"  src="multimedia/elencofeeds.gif" width="719" height="422" border="1" /></p>
+<p>Al click su &quot;modifica&quot; si andr&agrave; alla pagina con modulo precompilato, dove &egrave; possibile (similmente alle categorie), modificare o annullare l'operazione. In caso di conferma (campo nome riempito e nessun errore del server), la pagina risultante mostrer&agrave; il risultato dell'operazione e il link di ritorno all'elenco di feeds corrente. E' possibile inserire da 0 a 4 links per il feed; cancellando la fonte 2, la fonte 3 prender&agrave; il posto della 2. </p>
+<p><img alt="figura"  src="multimedia/modfeed.gif" width="373" height="393" border="1" /> </p>
+<p>al click invece su <span class="collegam">elimina</span>, in modo simile alle categorie, verr&agrave; richiesta conferma di cancellazione e quindi si verr&agrave; portati a pagina di conferma con link di ritorno ad elenco feeds </p>
+<p><img alt="figura"  src="multimedia/delfeed.gif" width="495" height="152" border="1" /> </p>
+<p><strong>Inserimento feed </strong></p>
+<p>In fondo alla pagina con elenco feeds &egrave; presente un modulo per inserire un nuovo feed. Il modulo va compilato (analogamente alla modifica) con almeno il nome, gli altri dati potranno essere inseriti successivamente. Se l'operazione viene eseguita correttamente, verr&agrave; mostrato il link di ritorno all'elenco feeds, con il nuovo feed inserito. </p>
+<p><img alt="figura"  src="multimedia/insfeeds.gif" width="451" height="292" border="1" /></p>
+<h3>Visualizzazione tramite applet interattiva </h3>
+<p>Se l'utente &egrave; loggato, l'homepage mostra sulla sinistra i link alle pagine gi&agrave; viste, e sulla destra l'applet che permette di fruire ai contenuti. </p>
+<p><img alt="figura"  src="multimedia/homelogged.gif" width="693" height="374" border="1" /></p>
+<p>Premere il pulsante <strong>Connetti</strong>, verr&agrave; aperta una connessione con il server (application) richiedendo l'elenco delle categorie inserite dall'utente.<br />
+  Se la connessione ha esisto negativo, verr&agrave; mostrato un messaggio con cui si invita a riprovare, altrimenti viene visualizzato il messaggio di connessione effettuata, il pulsante viene disabilitato, e nell'elenco ad albero sottostante vengono caricate ed espanse le categorie inserite (figura seguente).</p>
+<p><img alt="figura"  src="multimedia/appletconn.gif" width="425" height="259" border="1" /></p>
+<p>Al click su una categorie, viene inviata al server la richiesta dei feeds inseriti nella categoria (es: sport). Quando i feeds sono ricevuti, vengono mostrati i nodi figli di &quot;sport&quot; nell'albero.</p>
+<p><img alt="figura"  src="multimedia/sposrt.gif" width="236" height="115" border="1" /> </p>
+<p>E' possibile in qualsiasi momento continuare l'espansione dei nuovi figli o di altre cateogorie, i contenuti gi&agrave; caricati ed espansi verranno mantenuti in memoria consentendo l'accesso immediato e non comportando nuove richieste all'application e relativi rallentamenti.</p>
+<p>Prosegueno l'espansione dei nodi (es: gazzetta.it), verr&agrave; effettuata <strong>richiesta</strong> all'application dei titoli per il feed richiesto. In questo caso l'application contatta tutte le urls con le URLs dei feeds inseriti per il feed, ottenendo un elenco di titoli (con data accanto). Questa operazione potrebbe richiedere alcuni secondi in funzione del carico di lavoro del server e dei server con le urls, quindi viene mostrato un messaggio in cui si invita ad attendere (eventuali altri click verranno ignorati), al termine del caricamento (thread applet), i titoli vengono caricati ed espansi nel nodo del feed. Nota che le descrizione (testi dei titoli) non sono caricate, ma vengono caricate al click sui titoli, in modo da non ricevere dati non richiesti per titoli che non interessano.</p>
+<p><img alt="figura"  src="multimedia/carititoli.gif" width="604" height="228" border="1" /> </p>
+<p>Si ricorda che anche in questa fase &egrave; possibile cliccare su nodi ad altri livelli, i contenuti (in questo caso anche i titoli) gi&agrave; caricati sono mantenuti in memoria e non verranno richiesti. Chiudendo il nodo con i titoli caricati, i titoli saranno mantenuti dentro consentendone in qualsiasi momento un accesso immediato (veid figura: gazzetta.it ha gi&agrave; caricato i titoli). </p>
+<p><img alt="figura"  src="multimedia/contcar.gif" width="407" height="138" border="1" /></p>
+<p>Al click su un titolo, viene inviata richiesta al server di ricevere i titoli per il feed. Quando ricevuti, vengono mostrati nella parte inferiore (formattazione html abilitata). Ricliccando su un titolo gi&agrave; caricato, non verr&agrave; rieffettuata la richiesta al server, ma verr&agrave; letto dalla memoria interna. </p>
+<p><img alt="figura"  src="multimedia/descok.gif" width="606" height="321" border="1" /></p>
+<p>Se un feed non ha titoli disponibili (ad esempio perch&eacute; la urls non &egrave; contattabile o non contiene titoli), viene generato un nodo speciale che avverte la mancanza e su cui i click non hanno effetto.</p>
+<p><img alt="figura"  src="multimedia/fontend.gif" width="314" height="95" border="1" /> </p>
+<h2>Realizzazione del sito</h2>
+<h3>Computazione lato client </h3>
+<p>La computazione lato client si basa sull'<strong>applet</strong> interattiva per la visualizzazione di categorie, feeds e titoli. L'applet &egrave; caricata in homepage (<em>index.jsp</em>) e viene lanciata dopo il login, prendendo come parametro <em>username</em>, l'username dell'utente loggato (settato dalla jsp).</p>
+<p>La scelta dell'applet &egrave; preferita rispetto ad una computazione lato server JSP/Servlet in quanto si desidera ricevere le informazioni in modo organizzato ed esplorarle dinamicamente, consentendo di accedere immediatamente a tutte le informazioni senza attese al server e con artefici grafici (grazie al JTree della applet e memorizzazione contenuti gi&agrave; ricevuti) per la visualizzazione. </p>
+<p>La connessione dell'applet avviene infatti specificando l'username. La comunicazione con l'application avviene tramite l'invio di richieste xml e memorizzazioni dei dati ricevuti in cache, descritte nel dettaglio in &quot;tipo informazioni memorizzate sul server e scambiate su rete&quot; in questa sezione..</p>
+<p>Il funzionamento dell'applet &egrave; documentato nella sezione precedente relativa all'uso del servizio. L'applet utilizza le librerie <em>lib1</em>, <em>lib2</em>, <em>lib4</em>, <em>lib5</em>, poste nella directory <em>applet</em>.</p>
+<p><strong>lib4</strong> fornisce funzioni per memorizzare testi, titoli e dati dei titoli (nome, data, descrizione) tramite oggetto <em>CacheTestiETitoli</em> ed accederci in modo efficiente tramite l'ID associato. Tramite l'ID vengono identificati univocamente le gerarchie di contenuti (categorie, feeds, titoli) di questo servizio web sia nella memorizzazione sul server in file xml, sia nei messaggi xml di scambio (vedi parti successive).</p>
+<p>  <strong>lib5</strong> fornisce funzioni per memorizzare le categorie e titoli ricevuti ed evitare di richiederli quando gi&agrave; presenti in memoria. In relazione a questo, vedi <em>CacheApplet</em> costruito e gestito tramite <strong><em>CacheAppletFactory</em></strong>. Quest'ultima classe si occupa della comunicazione con l'application, astraendo l'applet dai dettagli relativi alla comunciazione e fornendo metodi per accedere ai contenuti in modo semplice senza sapere se gi&agrave; presenti in cache o se verranno richiesti all'application, quindi ricevuti e memorizzati. La classe incorpora anche <em>CacheTestiETitoli</em> di <em>lib4</em> (descritta sopra), che viene analogamente gestita in modo trasparente all'applet (cio&egrave; i titoli e descrizioni gi&agrave; richiesti e ricevuti non verranno nuovamente richiesti, ma letti dalla cache). </p>
+<p><em>lib4</em> e <em>lib5</em> sono volutamente separate poich&eacute; l'application richiede solo lib4 (non necessita infatti di cache per categorie e feeds in quanto presenti nel file xml sul server relativo all'utente). </p>
+<p>L'applet (applet1) astrae dai dettagli della comunicazione. Il metodo<em> init()</em> istanzia tutti i componenti (<em>listener</em> della <em>JTree</em> escluso). Al click sul pulsante connetti, chiama le funzioni di connessione di <strong><em>CacheAppletFactory</em></strong> (oggetto incorporato nell'applet), in particolare <em>boolean accesso(String username). </em>In base al risultato della funzione l'applet riempir&agrave; la JTree o mostrer&agrave; errore. La lettura di categorie, feeds, titoli, descrizioni &egrave; effettuata con primitive singole di <em>CacheAppletFactory</em> che consente di ottenere arrays di ID di tutti i contenuti e relativi valori (metodi che ottengono valore in base all'ID, ad es: <em>getNomeCategoria(String id)</em>).</p>
+<p>L'applet salva internamente solo l'elenco degli IDs delle categorie e feeds. Alla generazione per&ograve; associa il nodo ad un <strong>lister</strong> tramite <strong>HashMap, </strong>ovvero  associa  oggetti <em>DefaultMutableTreeNode</em> su Stringhe / classi per identificare il nodo tramite: ID per la categoria, ID per il feed, (ID feed. ID titolo) per il titolo.</p>
+<p>Al click su un nodo non espanso, viene identificato quindi il livello (cio&egrave; se categoria o feed o titolo), letto gli <strong>ID</strong> tramite la HashMap, e chiamata la funzione relativa di <em>CacheAppletFactory</em> con l'ID (o gli IDs per i titoli) relativi. </p>
+<p>Al click  su un nodo feed non espanso, la chiamata per leggere i titoli avviene in un <strong>Thread</strong> interno <em>(caricaTitoliThread</em>), questo in modo da mostrare un messaggio di caricamento in corso mentre l'application processa le urls, e non far sembrare l'applet &quot;bloccata&quot;. Tutti gli altri contenuti sono risolti localmente al server e non necessitano di thread. Se il contenuto non &egrave; presente o si verifica un errore, la procedura viene comunque eseguita subito. </p>
+<p>La chiusura della socket avviene con la<em> destroy()</em> dell'applet. Per riconnettersi al server &egrave; quindi sufficiente ricaricare la pagina. </p>
+<h3>Computazione lato server</h3>
+<p>Consultare prima la sezione relativa all'uso del servizio relativa alla registrazione utenti e inserimento contenuti.</p>
+<p>La computazione &egrave; realizzata tramite JSP per le pagine di visualizzazione contenuti inseriti, moduli di inserimento, form di registrazione e modifica dati utente, pagina di modifica e cancellazione, con l'ausilio di classi in lib2 e lib3.<br />
+Le SERVLET sono utilizzate per processare dati in post e settare cookie, salvare, cancellare, modificare dati dei contenuti in base ai parametri passati. </p>
+<p>La scelta di usare Servlet e JSP per queste funzionalit&agrave; &egrave; dovuta al fatto che i contenuti sono inviati con poca interattivit&agrave; (sola lettura e scrittura organizzata sul server). L'utilizzo di una applet sarebbe risultata quindi una soluzione scomoda. </p>
+<p><strong>Files delle JSP </strong></p>
+<table width="100%" border="0" cellpadding="4" cellspacing="4">
+  <tr>
+    <th width="23%">&nbsp;
+      nome JSP </th>
+    <th width="62%">funzionalit&agrave; </th>
+    <th width="15%">librerie classi usate </th>
+  </tr>
+  <tr>
+    <td valign="top">index.jsp</td>
+    <td valign="top"><p><strong>homepage del sito</strong>
+        </p>
+    <p>Nella parte sinistra la parte relativa al login, a destra descrizione del servizio ed eventuale applet.    </p>
+    <p>Legge il cookie, se presente e valido sulla sinistra stampa i link per logout, gestione dati utente o gestione contenuti e sulla destra carica l'applet settando il valore del parametro username dell'applet con il valore del cookie </p></td>
+    <td valign="top">CookieFactory per lettura cookie username </td>
+  </tr>
+  <tr>
+    <td valign="top">jsp/categorie-elenco.jsp</td>
+    <td valign="top"><p>mostra elenco delle categorie
+      </p>
+    <p>I contenuti dell'utente sono letti istanziando  <em>NewsXmlFactory</em> sul file di nome &lt;username&gt;.xml presente in cartella /xml      </p>
+    <p>Se il file non esiste, viene creato dalla classe.      </p>
+    <p>Il modulo di inserimento categoria richiama la servlet Operazioni specificando come azione l'inserimento di cateogoria.      </p>
+    <p>I link per gestione feed richiamano la pagina feed-elenco.jsp passando come parametro (GET) l'ID della categoria (parametro identificativo nel file xml di salvataggio contenuti)      </p>
+    <p>I link di cancellazione categoria richiama    categorie-cancella.jsp passando ID categoria      </p>
+    <p>Il link di modifica categoria richiama categorie-modifica.jsp passando ID categoria</p></td>
+    <td valign="top">NewsXmlFactory.*</td>
+  </tr>
+  <tr>
+    <td valign="top">jsp/categorie-modifica.jsp</td>
+    <td valign="top">crea un modulo riempito con i valori letti della categoria passata (tramite ID in GET). In caso di posting, viene chiamata la sevlet Operazioni specificando l'operazione e l'id della categoria </td>
+    <td valign="top">NewsXmlFactory.*</td>
+  </tr>
+  <tr>
+    <td valign="top">jsp/categorie-cancella.jsp</td>
+    <td valign="top">crea un modulo con campo nascosto ( ID categoria in GET). In caso di posting, viene chiamata la sevlet operazioni specificando l'operazione di cancellazione (e l'id della categoria) </td>
+    <td valign="top">NewsXmlFactory.*</td>
+  </tr>
+  <tr>
+    <td valign="top">jsp/feed-elenco.jsp</td>
+    <td valign="top">mostra elenco dei feeds, link di ritorno categoria, quindi (analogamente a elenco categorie per il passaggio dati alle sottopagine) i vari link per gestione feeds </td>
+    <td valign="top">NewsXmlFactory.*</td>
+  </tr>
+  <tr>
+    <td valign="top">jsp/feed-modifica.jsp</td>
+    <td valign="top">crea un modulo riempito con i valori letti del feed passato (tramite ID in GET). In caso di posting, viene chiamata la sevlet Operazioni specificando l'operazione e l'id del feed </td>
+    <td valign="top">NewsXmlFactory.*</td>
+  </tr>
+  <tr>
+    <td valign="top">jsp/feed-cancella.jsp</td>
+    <td valign="top">crea un modulo con campo nascosto ( ID feed in GET). In caso di posting, viene chiamata la servlet operazioni specificando l'operazione di cancellazione (e l'id del feed) </td>
+    <td valign="top">NewsXmlFactory.*</td>
+  </tr>
+  <tr>
+    <td valign="top">jsp/registrazione.jsp</td>
+    <td valign="top"><p>La pagina dedicata alla registrazione di un nuovo utente, registrazione.jsp, visualizza un contenuto diverso in base ai parametri della request:     
+      </p>
+    <p>se la request &egrave; vuota, viene presentata la form per effettuare la registrazione, l'azione della form &egrave; sempre indirizzata alla pagina stessa<br />
+      &lt;form name=&quot;registrazione&quot; action=&quot;registrazione.jsp&quot; method=&quot;POST&quot;&gt;       &lt;fieldset&gt;        Nome:&lt;input type=&quot;text&quot; name=&quot;nome&quot; value=&quot;&quot; width=&quot;40&quot; /&gt; &lt;/p&gt;        Cognome:&lt;input type=&quot;text&quot; name=&quot;cognome&quot; value=&quot;&quot; width=&quot;40&quot; /&gt; &lt;/p&gt;       [ ... ]       &lt;/fieldset&gt;       &lt;/form&gt;      </p>
+    <p>se la request non &egrave; vuota, la jsp effettua diversi controlli sui parametri della request, nell'ordine:      </p>
+    <ul>
+        <li>per mezzo del metodo doubleUsername della classe UserXml controlla che il nome utente inserito non sia gi&agrave; stato utilizzato<br />
+          if(new UserXml().doubleUsername(username))</li>
+        <li>che il nome utente scelto non sia &quot;utenti&quot;</li>
+        <li>che nessuno dei campi della forma sia vuoto</li>
+        <li>che i campi password e conferma password coincidano</li>
+        <li>che la password inserita sia lunga almeno 6 caratteri</li>
+      </ul>      <p>se uno di questi errori viene rilevato, allora la jsp visualizza l'errore in questione, altrimenti, sempre utilizzando la classe UserXml, aggiunge il nuovo utente agli utenti registrati:       new UserXml().addUser(username,password,nome,cognome);       e visualizza un link per tornare all'HomePage.</p></td>
+    <td valign="top">userXmlFactory.*</td>
+  </tr>
+  <tr>
+    <td valign="top">jsp/modifica_dati_utente.jsp</td>
+    <td valign="top"><p>La pagina per la modifica dei dati ha un funzionamente del tutto simile a quella per la registrazione:
+      </p>
+    <ul>
+        <li><em>se la request &egrave; vuota,</em> la jsp presenta la form per la modifica (senza permettere la scelta di un   nuovo nome utente), ricava il nome utente tramite i <em>cookie</em> utilizzando la classe <em>CookieFactory</em> e cerca nome e cognome dell'utente  per mezzo dei metodi <em>getUserName</em> e <em>getUserSurname</em> della classe UserXml.
+<p> String username = new CookieFactory().getUsername(request);<br />
+  String old_nome = new UserXml().getUserName(username);<br />
+  String old_cognome = new UserXml().getUserSurname(username);<br />
+        </p>
+        </li>
+        <li><em>se la request non &egrave; vuota,</em> la jsp verifica che:
+<ul>
+  <li>nessuno dei campi richiesti sia vuoto</li>
+  <li> <em>password</em> e <em>conferma password</em> coincidano </li>
+  <li> che la password inserita sia lunga almeno 6 caratteri </li>
+</ul>
+se nessuno di questi errori viene riscontrato, la jsp effettua le modifiche:
+<p>new UserXml().modifyUser(username,new_password,new_nome,new_cognome);
+e setta i <em>cookie</em>  </p>
+<p>new CookieFactory().setUsername(response,username);
+altrimenti segnala l'errore e ripresenta la form per la modifica. </p>
+        </li>
+      </ul>    </td>
+    <td valign="top">userXmlFactory.*</td>
+  </tr>
+</table>
+<p><strong>Files delle SERVLET </strong></p>
+<table width="100%" border="0" cellpadding="4" cellspacing="4">
+  <tr>
+    <th>&nbsp;
+      nome Servlet e mappaggio url </th>
+    <th>funzionalit&agrave; </th>
+    <th>librerie classi usate </th>
+  </tr>
+  <tr>
+    <td>Login.java<br />
+    /Login</td>
+    <td><p>controlla esistenza username e validit&agrave; password, quindi setta cookie in caso positivo e mostra link per gestione contenuti e homepage </p>
+    <p>L'eventuale errore viene notificato</p></td>
+    <td>userXmlFactory.*</td>
+  </tr>
+  <tr>
+    <td>Logout.java<br />
+    /Logout</td>
+    <td><p>cancella il cookie username e rimanda all'homepage </p>    </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Operazioni.java<br />
+    /Operazioni</td>
+    <td><p>in base al valore del parametro &quot;azione&quot; passato come campo hidden dei moduli delle jsp, effettua le operazioni (precedentemente descritte) :</p>
+      <ul>
+        <li>inserisci categoria, stampa errore se il nome non &egrave; passato </li>
+        <li>cancella categoria, stampa errore se la categoria non esiste </li>
+        <li>modifica categoria, stampa errore se la categoria non esiste </li>
+        <li>inserisci feed, aggiunge feeds (se presente)</li>
+        <li>cancella feed,  stampa errore se il feed non esiste </li>
+        <li>modifica feed,  stampa errore se il feed non esiste </li>
+    </ul>
+      <p>Se l'azione non &egrave; una di queste, viene stampato &quot;operazione non valida&quot;.</p>
+      <p>Al termine delle operazioni sono mostrati i link   per tornare alla gestione con le jsp </p></td>
+    <td>NewsXmlFactory.*</td>
+  </tr>
+</table>
+<p><strong>Application</strong></p>
+<p>Genera un thread per ogni connessione su socket da parte dell'applet (porta 2518).</p>
+<p>Elabora il documento ricevuto, quindi in base al nome del nodo root esegue le operazioni seguenti: </p>
+<table width="600" border="0" cellspacing="4" cellpadding="4">
+  <tr>
+    <td width="82"><strong>nome nodo </strong></td>
+    <td width="82"><strong>attributi passati </strong></td>
+    <td width="414"><strong>operazione</strong></td>
+    <td width="64"><strong>funzione</strong></td>
+  </tr>
+  <tr>
+    <td>accesso</td>
+    <td>username</td>
+    <td>invia elenco categorie per l'utente passato errore se </td>
+    <td>inviaElencoCats(String username) o inviaErrore(String err)</td>
+  </tr>
+  <tr>
+    <td>get_feeds</td>
+    <td>idcat</td>
+    <td>invia Elenco Feeds per la categoria richiesta </td>
+    <td>inviaElencoFeeds(String idCat)</td>
+  </tr>
+  <tr>
+    <td>get_titoli</td>
+    <td>idfeed</td>
+    <td>invia Elenco Titoli per il feed richiesto * </td>
+    <td>inviaElencoTitoli(String idFeed) * </td>
+  </tr>
+  <tr>
+    <td>get_testo</td>
+    <td>idfeed, id (titolo) </td>
+    <td>invia testo per il titolo richiesto (idenficato anche con id del feed) </td>
+    <td>inviaTesto(String idFeed, String id)</td>
+  </tr>
+  <tr>
+    <td>closeSocket</td>
+    <td>&nbsp;</td>
+    <td>chiude la socket </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>esci</td>
+    <td>&nbsp;</td>
+    <td>termina l'applicazione </td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>Il formato dei messaggi &egrave; descritto nella parte successiva.</p>
+<p>Dopo la richiesta di accesso, l'application costruisce un oggetto <em>NewsXmlFactory</em> sull'utente che richiede la connessione, quindi ha i metodi per ottenere categorie e feeds (tutti disponibili immediatamente).<br />
+  <br />
+  * 
+I Titoli vengono invece richiesti tramite classe <em><strong>RssReader</strong></em> che chiama le urls del feed, le processa ed estrae i titoli (nomi, date, descrizioni), poi li salva tutti in oggetto interno di classe <strong><em>CacheTestiETitoli</em></strong> (lib 4, in comune con applet). I titoli sono trattati dall'application con oggetti di classe <em>RssElemento</em>, a loro volta contenuti in <em>ListaElementiRss</em> (incorporata in <em>CacheTestiETitoli</em>). Errori parsing gestiti con <em><strong>MyErrorHandler</strong></em>.</p>
+<p>&nbsp;</p>
+<h3>Tipo informazioni memorizzate sul server e scambiate su rete</h3>
+<p><strong>Utenti </strong></p>
+<p>Gli utenti sono salvati nel file <em>xml/utenti.xml</em> secondo lo schema DTD (<em>xml-types/utenti.dtd</em>) seguente</p>
+<p class="codice">&lt;!ELEMENT utenti_registrati (utente*)&gt;<br />
+  &lt;!ELEMENT utente (#PCDATA)&gt;<br />
+&lt;!ATTLIST utente username ID #REQUIRED&gt;<br />
+&lt;!ATTLIST utente password CDATA #REQUIRED&gt;<br />
+&lt;!ATTLIST utente nome CDATA #REQUIRED&gt;<br />
+&lt;!ATTLIST utente cognome CDATA #REQUIRED&gt; </p>
+<p><strong>Categorie, feeds e urls  </strong> </p>
+<p>salvati in files <em>xml/&lt;username&gt;.xml</em> (&egrave; effettuato un controllo per evitare registrazione di nomi di utenti con username &quot;utenti&quot; e che non contengano caratteri che non possono essere usati in nomi di files). </p>
+<p>Schema (<em>xml-types/feeds.dtd</em>):</p><p>
+<span class="codice">&lt;!ELEMENT elenco_categorie (categoria_feed*)&gt;<br />
+&lt;!ELEMENT categoria_feed (feed*)&gt;<br />
+&lt;!ATTLIST categoria_feed id_cat ID #REQUIRED&gt;<br />
+&lt;!ATTLIST categoria_feed  nome CDATA #REQUIRED&gt;<br />
+&lt;!ATTLIST categoria_feed  note CDATA #IMPLIED&gt; <br />
+&lt;!ELEMENT feed (url_primaria, (url*))&gt;<br />
+&lt;!ATTLIST feed id_feed ID #REQUIRED&gt;<br />
+&lt;!ATTLIST feed nome CDATA #REQUIRED&gt;<br />
+&lt;!ELEMENT url_primaria (#PCDATA)&gt;<br />
+&lt;!ELEMENT url (#PCDATA)&gt;</span><br />
+</p>
+<p>Notare l'utilizzo degli ID che identificano univocamente categorie e ids nel documento. La classe di gestione di questi files (<em>NewsXmlFactory</em>) gestisce automaticamente gli ID, creandone uno univoco all'aggiunta di una nuova categoria o feed nella forma rispettivamente &quot;c&lt;N&gt;&quot; e &quot;f&lt;N&gt;&quot; dove N &egrave; un numero progressivo (analogamente a chiavi auto_increment per database relazionali). </p>
+<p><strong>Messaggi scambiati </strong></p>
+<p>Si presenta uno schema come riepilogo dei messaggi scambiati (da leggere da sinistra verso destra, quindi dall'alto verso il basso), con relative DTD. </p>
+<table width="100%" border="0" cellspacing="4" cellpadding="4">
+  <tr>
+    <th valign="top">APPLET</th>
+    <th valign="top">APPLICATION</th>
+  </tr>
+  <tr>
+    <td width="47%" valign="top"><p><strong>Applet</strong>: una volta che l'utente loggato, l'applet legge il parametro <strong>username</strong> settato dal cookie tramite JSP, e invia una richiesta al server [ <em>accessoERichiediCats(String username)</em> ]</p>
+      <p class="codice">&lt;accesso username=&quot;luigi&quot;&gt;&lt;/accesso&gt;</p>
+      <p class="codice">&lt;!ELEMENT accesso&gt;<br />
+      &lt;!ATTLIST accesso username CDATA #REQUIRED&gt;</p>    </td>
+    <td width="53%" valign="top"><p><strong>Application</strong>: riceve il messaggio e risponde con l'elenco delle categorie [ <em>inviaElencoCats(String username) </em>] </p>
+      <p class="codice">&lt;elenco_cat&gt;<br />
+  &nbsp;&lt;cat nome=&quot;sport&quot; note=&quot;&quot; feeds=&quot;3&quot; id=&quot;c1&quot;&gt;&lt;/cat&gt;<br />
+  &nbsp;&lt;cat nome=&quot;cronaca&quot; feeds=&quot;0&quot; id=&quot;c2&quot;&gt;&lt;/cat&gt;<br />
+        [ ... ]<br />
+  &lt;/elenco_cat&gt;</p>
+      <p class="codice">&lt;!ELEMENT elenco_cat (cat*)&gt;<br />
+&lt;!ELEMENT cat&gt;<br />
+&lt;!ATTLIST cat nome CDATA #REQUIRED&gt;<br />
+&lt;!ATTLIST cat note CDATA #REQUIRED&gt;<br />
+&lt;!ATTLIST cat feeds CDATA #REQUIRED&gt;<br />
+&lt;!ATTLIST cat id CDATA #REQUIRED&gt;</p>
+      <p>La lettura avviene dal file<em> luigi.xml</em>, tramite la classe <em>NewsXmlFactory</em> (che legge e memorizza tutto il contenuto del file xml).<br />
+        Se il file non esiste (utente non esistente o che non ha ancora inserito nulla), viene inviato un messaggio di errore</p>
+      <p class="codice">&lt;errore msg=&quot;Impossibile leggere i dati per l'utente luigi&quot;&gt;&lt;/errore&gt; </p>
+    <p class="codice">&lt;!ELEMENT errore (#PCDATA)&gt;<br />
+&lt;!ATTLIST errore msg CDATA #REQUIRED&gt;</p>    </td>
+  </tr>
+  <tr>
+    <td valign="top"><p><strong>Applet</strong>: legge l'elenco delle categorie, quindi salva internamente le categorie nell'oggetto <em>CacheApplet</em> (oggetto che memorizza di volta in volta l'albero dei contenuti ricevuti, evitando la richiesta se i dati richiesti sono stati gi&agrave; ricevuti) [<em>salvaCategorie</em>] </p>
+      <p><strong>Applet</strong>: l'utente sceglie una categoria (es: sport), e invia all'application il messaggio (si noti che viene inviato l'id, non il nome della categoria) </p>
+      <p class="codice">&lt;get_feeds idcat=&quot;c1&quot;&gt;&lt;/get_feeds&gt; </p>
+      <p class="codice">&lt;!ELEMENT get_feeds&gt;<br />
+      &lt;!ATTLIST get_feeds idcat CDATA #REQUIRED&gt;</p>    </td>
+    <td valign="top"><p><strong>Application</strong>: invia l'elenco dei feeds presenti nella categoria &quot;sport&quot;[<em> inviaElencoFeeds(String idCat)</em>]</p>
+      <p class="codice">&lt;elenco_feeds&gt;<br />
+  &lt;feed nome=&quot;gazzetta.it&quot; id=&quot;f1&quot;&gt;&lt;/feed&gt;<br />
+  &lt;feed nome=&quot;ansa.it sport&quot; id=&quot;f2&quot;&gt;&lt;/feed&gt;<br />
+        [ ... ]<br />
+  &lt;/elenco_feeds&gt;</p>
+      <p class="codice">&lt;!ELEMENT elenco_feeds (feed*)&gt;<br />
+        &lt;!ATTLIST elenco_feeds idcat CDATA #REQUIRED&gt;<br />
+        &lt;!ELEMENT feed (#PCDATA)&gt;<br />
+        &lt;!ATTLIST feed nome CDATA #REQUIRED&gt;<br />
+      &lt;!ATTLIST feed id CDATA #REQUIRED&gt;</p>    </td>
+  </tr>
+  <tr>
+    <td valign="top"><p><strong>Applet</strong>: legge l'elenco dei feed e salva internamente in <em>CacheApplet</em> [<em>salvaFeedsRicevuti()</em>]</p>
+      <p><strong>Applet</strong>: l'utente sceglie un feed (es: gazzetta.it), e invia all' application il messaggio (si noti che viene inviato l'id del feed, tale id &egrave; univoco nell'intero documento xml dell'utente, quindi &egrave; sufficiente per identificarlo fra le categorie). </p>
+      <p class="codice">&lt;get_titoli idfeed=&quot;f1&quot;&gt;&lt;/get_titoli&gt;</p>
+      <p class="codice">&lt;!ELEMENT get_titoli&gt;<br />
+      &lt;!ATTLIST get_feeds idfeed CDATA #REQUIRED&gt;</p>    </td>
+    <td valign="top"><p><strong>Application</strong>: se &egrave; la volta che l'utente richiede il feed, vengono processate le urls con contenuto xml (<em>RssReader</em>) e memorizzati internamente i contenuti (classe <em>cacheTestiTitoli</em>), altrimenti vengono lette dalla memoria interna. Poi i titoli vengono spediti all'Applet [<em>funzione inviaElencoTitoli()</em>] </p>
+      <p class="codice">&lt;titoli idfeed=&quot;f1&quot;&gt;<br />
+  &lt;titolo nome=&quot;L'Udinese stupisce ancora&quot; id=&quot;1&quot; data=&quot;12 gennaio 08 &quot;&gt;&lt;/titolo&gt;<br />
+  &lt;titolo nome=&quot;Inter, Maniche si presenta&quot; id=&quot;2&quot; data=&quot;12 set 07&quot;&gt;&lt;/titolo&gt;<br />
+        [ ... ] <br />
+  &lt;/titoli&gt;</p>
+      <p><span class="codice">&lt;!ELEMENT titoli (titolo*)&gt;<br />
+&lt;!ATTLIST titoli idfeed CDATA #REQUIRED&gt;<br />
+&lt;!ELEMENT titolo (#PCDATA)&gt;<br />
+&lt;!ATTLIST titolo nome CDATA #REQUIRED&gt;<br />
+&lt;!ATTLIST titolo id CDATA #REQUIRED&gt;<br />
+&lt;!ATTLIST titolo data CDATA #IMPLIED&gt;</span></p>
+      <p><br />
+      </p></td>
+  </tr>
+  <tr>
+    <td valign="top"><p><strong>Applet</strong>: legge i titoli ricevuti e salva internamente [<em>salvaTitoliRicevuti()</em>] nel proprio oggetto <em>CacheTestiETitoli (in libreria usata anche da Application)</em><em>.</em></p>
+      <p><strong>Applet</strong>: l'utente sceglie un titolo e invia la richiesta per visualizzarne il contenuto (tag <em>description</em> nella sintassi RSS)</p>
+      <p class="codice">&lt;get_testo idfeed=&quot;f1&quot; id=&quot;1&quot;&gt;&lt;/get_testo&gt;</p>
+      <p class="codice">&lt;!ELEMENT get_testo&gt;<br />
+        &lt;!ATTLIST get_testo idfeed CDATA #REQUIRED&gt;<br />
+      &lt;!ATTLIST get_testo id CDATA #REQUIRED&gt;</p>    </td>
+    <td valign="top"><p><strong>Application</strong>: legge dalla <em>cacheTestiTitoli</em> e restituisce il relativo contenuto (gi&agrave; memorizzato) [<em>inviaTesto(String idFeed, String n)</em>] </p>
+      <p class="codice">&lt;testo idfeed=&quot;f1&quot; id=&quot;1&quot;&gt;<br />
+        L'attaccante viola, finito in panchina [...]<br />
+  &lt;/testo&gt;</p>
+    <p><span class="codice">&lt;!ELEMENT testo (#PCDATA)&gt;<br />
+&lt;!ATTLIST testo idfeed CDATA #REQUIRED&gt;<br />
+&lt;!ATTLIST testo id CDATA #REQUIRED&gt;</span><br />
+    </p></td>
+  </tr>
+  <tr>
+    <td valign="top"><strong>Applet</strong>: salva  il testo nella cache interna <em>(</em>oggetto<em> CacheApplet</em>) [salvaDescription() ] , per poi essere immediatamente accessibile </td>
+    <td valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top"><strong>Applet</strong>: chude socket 
+      <p class="codice">&lt;closeSocket&gt;&lt;/closeSocket&gt;</p>
+      <p class="codice">&lt;!ELEMENT closeSocket EMPTY &gt;</p></td>
+    <td valign="top">&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp; </p>
+<h2>Istruzioni compilazioni sorgenti del sito    </h2>
+<p>Prima di compilare i sorgenti dell'applicazione  &egrave; necessario modificare il file di configurazione Config.java situat in progetto lib1.</p>
+<ul>
+  <li> SERVERADD: indirizzo DNS  server</li>
+  <li>WEBPORT: numero di porta su cui &egrave; in ascolto il server;</li>
+  <li>CONTEXTADD: indirizzo di contesto,  radice in cui sono contenuti  i  progetti</li>
+  <li>WEDDIR: directory di deployment del progetto web public_webapp</li>
+  <li>APPPORT:  porta su cui &egrave; in ascolto l'Application (2518) </li>
+  <li>APPDIR: directory di deployment del progetto application</li>
+</ul>
+<p>Per il corretto funzionamento delle <strong>Applet</strong> &egrave; necessario che nella directory public_webapp/applet siano presenti i seguenti jar</p>
+<ul>
+  <li> <strong>applet1.jar</strong>: contiene l'Applet</li>
+  <li><strong>lib1</strong> con i parametri sopra descritti </li>
+  <li><strong>lib4</strong> fornisce funzioni per memorizzare testi, titoli e dati dei titoli (nome, data, descrizione) tramite oggetto <em>CacheTestiETitoli</em> ed accederci in modo efficiente tramite l'ID associato. Tramite l'ID vengono identificati univocamente le gerarchie di contenuti (categorie, feeds, titoli) di questo servizio web sia nella memorizzazione sul server in file xml, sia nei messaggi xml di scambio (vedi parti successive).</li>
+  <li> <strong>lib5</strong> fornisce funzioni per memorizzare le categorie e titoli ricevuti ed evitare di richiederli quando gi&agrave; presenti in memoria.</li>
+  <li><strong>twi.jar</strong> per terminazione stream xml</li>
+</ul>
+<p>L'<strong>applicazione</strong> usa le librerie <em>lib1</em>, <em>lib2</em>, <em>lib4</em> (da inserire in cartella <em>application/lib</em>), va lanciata con <em>nohup java -jar application.jar &amp;</em>, da /application. Il file nohup.out contiene eventuali messaggi di errore restituiti da application. Per terminare applicazione: ps -x, individuare il pid corrispondente, quindi eseguire kill N, oppure connettersi alla socket e inviare messaggio <em>&lt;esci /&gt;</em> . </p>
+<p>Files <strong>xml</strong>: controllare che il percorso DTD relativo nel file sia<em> ../xml-types/nome.dtd</em> altrimenti vengono restuiti errori lato server (<em>Malformed Url</em>) anche disabilitando la validazione in lettura. </p>
+<div id="footer" >
+<hr />News aggregator - Progetto TWI - Gruppo 518: Elvis Ciotti, Ugo Ceccarelli - 2008 
+<p>
+    <a href="http://validator.w3.org/check?uri=http%3A%2F%2Fsi-tomcat.csr.unibo.it%3A8080%2F%257eelvis.ciotti%2Findex.jsp&amp;charset=%28detect+automatically%29&amp;doctype=Inline&amp;group=0"><img
+        src="http://www.w3.org/Icons/valid-xhtml10"
+        alt="Valid XHTML 1.0 Transitional" width="88" height="31" border="0" /></a></p>
+</div>
+</body>
+
+</html>
+

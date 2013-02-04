@@ -1,0 +1,19 @@
+body { 	font-family: Verdana, Arial, Helvetica, sans-serif; }
+div.main { width:850px; font-size:12px; clear:left;}
+div.partesx { width:200px; float:left; border:#FF9900 1px solid; padding:5px;margin-right:8px;}
+div.partedx { width:600px; float:right;border:#FF9900 1px solid; padding:5px;}
+h1 { font-size:24px; }
+h2 { font-size:20px }
+h3 { font-size:16px ; }
+h4 { font-size:14px; text-decoration:underline; }
+h5 { font-size:12px; }
+table.tabella_bordata tr th {  background-color:#CCCCCC; padding:5px;}
+table.tabella_bordata tr td{  border: #CCCCCC 1px solid ; padding:5px; font-size:12px;}
+ul.ulform { list-style-type:none; padding-left:5px; margin-left:5px;}
+ul.ulform  li { background-color:#EBEBEB; margin:3px; padding:5px; font-size:13px;}
+input.grande { font-size:15px; font-weight:bold;}
+
+a  { color: #000099; }
+a:hover  { color: #FF0000; text-decoration:underline }
+p { padding-left:5px; }
+div#footer { float:left; clear:both; margin-top:50px; width:850px; font-size:10px;}
