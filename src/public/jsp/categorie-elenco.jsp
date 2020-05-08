@@ -2,7 +2,6 @@
 <%@page pageEncoding="UTF-8"%>
 <%@page import="twi518.NewsXmlFactory.*"%>
 <%@page import="twi518.servlets.*"%>
-
 <%--
 The taglib directive below imports the JSTL library. If you uncomment it,
 you must also add the JSTL library to the project. The Add Library... action
@@ -11,12 +10,9 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
 <%--
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 --%>
-
-<!DOCTYPE html 
+<!DOCTYPE html
      PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -43,8 +39,7 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
                 </tr>
             </thead>
             <% 
-           
-            for (int i=0; i<listaCategorie.length; i++) {
+for (int i=0; i<listaCategorie.length; i++) {
                CategoriaFeed cf = listaCategorie[i]; %>
             <tr>
                 <td ><p><strong><%= cf.getNome() %></strong><br />
@@ -54,8 +49,7 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
                   <a href="feed-elenco.jsp?idcat=<%= cf.getId() %>">Gestione fonti </a></p></td>
                 <td>
                     <ul>
-                  
-                        <li><a href="categorie-modifica.jsp?id=<%= cf.getId() %>">modifica nome e opzioni </a> - 
+<li><a href="categorie-modifica.jsp?id=<%= cf.getId() %>">modifica nome e opzioni </a> -
 						<a href="categorie-cancella.jsp?id=<%= cf.getId() %>">elimina</a></li>
                   </ul>	</td>
             </tr>
@@ -80,8 +74,7 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
         </form>
         <p>&nbsp;</p>
         <p>&nbsp;</p>
-        
-        <%--
+<%--
     This example uses JSTL, uncomment the taglib directive above.
     To test, display the page like this: index.jsp?sayHello=true&name=Murphy
     --%>

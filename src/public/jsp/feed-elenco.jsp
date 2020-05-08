@@ -10,19 +10,15 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
 <%--
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 --%>
-
-<!DOCTYPE html 
+<!DOCTYPE html
      PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Feed della categoria</title>
 <link href="../style-sheets/stili.css" rel="stylesheet" type="text/css" />
     </head>
-
 <body>
 <%@ include file="../xhtml/header.html" %>
 <% String username = new CookieFactory().getUsername(request); %>
@@ -98,8 +94,7 @@ Feeds inseriti nella categoria:
       <input name="link4" type="text" id="link4" size="65" />
       </label>
 </li>
-
-  </ul> 
+</ul>
   <input type="submit" name="Submit" value="Inserisci" class="grande" />
   <input name="azione" type="hidden" id="azione" value="inseriscifeed" />
   <input name="idcat" type="hidden" id="idcat" value="<%= cf.getId() %>" />

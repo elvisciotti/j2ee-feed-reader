@@ -1,61 +1,31 @@
 <!ELEMENT accesso>
 <!ATTLIST accesso username CDATA #REQUIRED>
-
 <!ELEMENT elenco_cat (cat*)>
 <!ELEMENT cat>
 <!ATTLIST cat nome CDATA #REQUIRED>
 <!ATTLIST cat note CDATA #REQUIRED>
 <!ATTLIST cat feeds CDATA #REQUIRED>
 <!ATTLIST cat id CDATA #REQUIRED>
-
 <!ELEMENT errore (#PCDATA)>
 <!ATTLIST errore msg CDATA #REQUIRED>
-
-
-
-
-
-
 <!ELEMENT get_feeds>
 <!ATTLIST get_feeds idcat CDATA #REQUIRED>
-
 <!ELEMENT elenco_feeds (feed*)>
 <!ATTLIST elenco_feeds idcat CDATA #REQUIRED>
 <!ELEMENT feed (#PCDATA)>
 <!ATTLIST feed nome CDATA #REQUIRED>
 <!ATTLIST feed id CDATA #REQUIRED>
-
-
-
-
-
-
-
 <!ELEMENT get_titoli>
 <!ATTLIST get_feeds idfeed CDATA #REQUIRED>
-
 <!ELEMENT titoli (titolo*)>
 <!ATTLIST titoli idfeed CDATA #REQUIRED>
 <!ELEMENT titolo (#PCDATA)>
 <!ATTLIST titolo nome CDATA #REQUIRED>
 <!ATTLIST titolo id CDATA #REQUIRED>
 <!ATTLIST titolo data CDATA #IMPLIED>
-
-
-
-
-
-
-
 <!ATTLIST get_testo idfeed CDATA #REQUIRED>
 <!ATTLIST get_testo id CDATA #REQUIRED>
-
 <!ELEMENT testo (#PCDATA)>
 <!ATTLIST testo idfeed CDATA #REQUIRED>
 <!ATTLIST testo id CDATA #REQUIRED>
-
-
-
 <!ATTLIST esci (#PCDATA)>
-
-

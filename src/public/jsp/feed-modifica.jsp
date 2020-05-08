@@ -10,19 +10,15 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
 <%--
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 --%>
-
-<!DOCTYPE html 
+<!DOCTYPE html
      PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>modifica feed della categoria</title>
 <link href="../style-sheets/stili.css" rel="stylesheet" type="text/css" />
 </head>
-
 <body>
 <%@ include file="../xhtml/header.html" %>
 <% String username = new CookieFactory().getUsername(request); %>
@@ -56,8 +52,7 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
       <input name="link4" type="text" id="link4" value="<%= f.getUrl(2) %>" size="65" />
       </label>
 </li>
-	
-  </ul>
+</ul>
   <input type="submit" name="Submit" value="MODIFICA"  class="grande" />
   <input name="azione" type="hidden" id="azione" value="modificafeed" />
   <input name="idcat" type="hidden" value="<%= request.getParameter("idcat") %>" />

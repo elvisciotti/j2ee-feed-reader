@@ -12,7 +12,6 @@ table.tabella_bordata tr td{  border: #CCCCCC 1px solid ; padding:5px; font-size
 ul.ulform { list-style-type:none; padding-left:5px; margin-left:5px;}
 ul.ulform  li { background-color:#EBEBEB; margin:3px; padding:5px; font-size:13px;}
 input.grande { font-size:15px; font-weight:bold;}
-
 a  { color: #000099; }
 a:hover  { color: #FF0000; text-decoration:underline }
 p { padding-left:5px; }

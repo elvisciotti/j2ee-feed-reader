@@ -12,7 +12,6 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 --%>
 <!DOCTYPE html  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title>Feeds aggregator - Homepage</title>
@@ -25,8 +24,7 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
             <div class="partesx">
                 <% 
                 String username = new CookieFactory().getUsername(request);
-                
-                if (username.equals("")) { %>
+if (username.equals("")) { %>
                 <h4>Login</h4>
                 <form action="Login" method="post">
                    <label>  Username:
@@ -40,17 +38,14 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
                     <br />
                     <p><a href="jsp/registrazione.jsp">Registrati</a></p>
                 </form>
-                
-                <% } else { %>
+<% } else { %>
                 <h5><%= username %> loggato</h5>
                 <ul>
                     <li><a href="jsp/categorie-elenco.jsp"><strong>Gestione fonti </strong></a></li>
 					<li><a href="jsp/modifica_dati_utente.jsp">modifica dati utente</a></li>
                     <li> <a href="Logout">Logout</a></li>
-                    
-                </ul>
-                
-                <% } %>
+</ul>
+<% } %>
             </div>
             <div class="partedx">
                 <% if (!username.equals("")) { %>
@@ -68,8 +63,7 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
                 <p>Utente di esempio con feeds gi&agrave; inseriti: <b>utente</b> (password: utente)</p>
                 <p><a href="doc.html">doc.html</a></p>
             </div>
-			
-        </div>
+</div>
 		<%@ include file="xhtml/footer.html" %>
     </body>
 </html>

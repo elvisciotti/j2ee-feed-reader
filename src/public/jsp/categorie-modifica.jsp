@@ -10,20 +10,15 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
 <%--
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 --%>
-
-<!DOCTYPE html 
+<!DOCTYPE html
      PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Modifica categoria </title>
 <link href="../style-sheets/stili.css" rel="stylesheet" type="text/css" />
 </head>
-
-
 <body>
 <% String username = new CookieFactory().getUsername(request); %>
 <%@ include file="../xhtml/header.html" %>
@@ -38,8 +33,7 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
       <br />
         <input name="nuovonome" type="text" value="<%= cf.getNome() %>" size="80" />
     </li>
-    
-    <li> note <br />
+<li> note <br />
     <textarea name="nuovanota"><%= cf.getNote() %></textarea>
       <br />
     </li></ul>

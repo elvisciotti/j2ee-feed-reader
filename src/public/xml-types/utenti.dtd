@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!--
     Document   : utenti.dtd
     Created on : 16 gennaio 2008, 22.19
     Author     : Gruppo 518  Elvis Ciotti
     Description:
         Purpose of the document follows.
-
-    TODO define vocabulary identification data
+TODO define vocabulary identification data
     PUBLIC ID  : -//vendor//vocabulary//EN
     SYSTEM ID  : http://server/path/utenti.dtd
 -->
-
 <!ELEMENT utenti_registrati (utente*)>
 <!ELEMENT utente (#PCDATA)>
     <!ATTLIST utente username ID #REQUIRED>

@@ -10,12 +10,9 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
 <%--
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 --%>
-
-<!DOCTYPE html 
+<!DOCTYPE html
      PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -23,9 +20,7 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
         <link href="../style-sheets/stili.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
-	
-	
-        <%
+<%
         Enumeration in = request.getParameterNames();
         if(!in.hasMoreElements()){
         %>
@@ -46,18 +41,14 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
         </div>
         <%
         }else{
-            
-            
-            String nome = request.getParameter("nome");
+String nome = request.getParameter("nome");
             String cognome = request.getParameter("cognome");
             String username = request.getParameter("username");
             String password = request.getParameter("password");
             String conferma = request.getParameter("conferma");
-            
-            String error = "";
+String error = "";
             boolean err = false;
-            
-            if(new UserXml().doubleUsername(username)){
+if(new UserXml().doubleUsername(username)){
                 error = "Il nome utente è gia stato utilizzato, sceglierne un altro.";
                 err = true;
             }
@@ -99,10 +90,7 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
         <%
             }else{
                 new UserXml().addUser(username,password,nome,cognome);
-        //Cookie u = new Cookie("username",username);
-        //u.setMaxAge(7200);
-        //response.addCookie(u);
-        %>
+%>
         <h1> Registrazione effettuata</h1>
         <h2><%=cognome%> <%=nome%></h2>
         <p> <a href="../index.jsp"> Effettua il login dalla Homepage</a> </p>
@@ -119,6 +107,5 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
         Hello ${param.name}!
     </c:if>
     --%>
-    
-    </body>
+</body>
 </html>

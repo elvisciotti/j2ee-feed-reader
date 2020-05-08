@@ -1,8 +1,9 @@
 J2EE RSS/ATOM feed reader
 =========================
 
-Web application built with Java JSP + Java socket server + Applet.
-Data store on disk, XML format.
+Web application built with Java 5,composed by admin area, user registration and login, feed selection, and Applet to download and read news caching content.
+
+Built in 2010
 
 # Features
  * User registration, login and user detail editing
@@ -17,9 +18,15 @@ Data store on disk, XML format.
 
 Applet
 
-![Applet](https://raw.github.com/elvisciotti/j2ee-feed-reader/master/screenshots/applet-5.gif)
+![Applet1](https://raw.github.com/elvisciotti/j2ee-feed-reader/master/screenshots/applet-5.gif)
 
-![Applet](https://raw.github.com/elvisciotti/j2ee-feed-reader/master/screenshots/applet-6.gif)
+![Applet2](https://raw.github.com/elvisciotti/j2ee-feed-reader/master/screenshots/applet-6.gif)
+
+User registration form
+![Applet](https://raw.github.com/elvisciotti/j2ee-feed-reader/master/screenshots/jsp-edit-user-details.gif)
+
+Admin area to edit RSS list
+![Applet](https://raw.github.com/elvisciotti/j2ee-feed-reader/master/screenshots/jsp-manage-feeds.gif)
 
 <!--
 User login, registration, edit details
