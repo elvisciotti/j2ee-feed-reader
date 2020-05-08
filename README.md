@@ -3,7 +3,7 @@ J2EE RSS/ATOM feed reader
 
 Web application built with Java 5,composed by admin area, user registration and login, feed selection, and Applet to download and read news caching content.
 
-Built in 2010
+Built in 2005 for an university project when learning how to code Java - I keep it as a pleasent memory of my first project
 
 # Features
  * User registration, login and user detail editing
